@@ -40,6 +40,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	   	server.vm.provision :shell, :path => "java_install.sh"
 	   	server.vm.provision :shell, :path => "tomcat_install.sh"
 	   end
+	   if prefix == "mongodb"
+	   	server.vm.provision :shell, :path => "mongodb_install.sh"
+	   end
 	   server.vm.network :private_network, ip: "10.0.3.#{ip_start+i}", :netmask => "255.255.0.0"
 	   #server.vm.network :public_network, ip: "10.0.3.#{ip_start+i}", :netmask => "255.255.0.0"
         end

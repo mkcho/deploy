@@ -43,5 +43,6 @@ sudo update-rc.d tomcat7 enable
 
 # /home/mk/sis/src/bms/bms-master/target/watch-1.0.0-null.war ./watch.war
 sudo cp /vagrant/dist/watch-1.0.0-null.war /var/lib/tomcat7/webapps/watch.war
+#sudo cp /vagrant/dist/watch_web.xml /var/lib/tomcat7/webapps/watch/WEB-INF/web.xml
 
 sudo service tomcat7 restart

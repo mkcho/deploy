@@ -19,12 +19,12 @@ port = 27027
 rest = true
 
 #5. mongodb replica setup
-cfg = {
-"_id" : "bms",
-"members" : [
-{ "_id" : 0, "host" : "10.0.3.211" },
-{ "_id" : 1, "host" : "10.0.3.212" }
-]
-}
-rs.initiate(cfg)
+#cfg = {
+#"_id" : "bms",
+#"members" : [
+#{ "_id" : 0, "host" : "10.0.3.211" },
+#{ "_id" : 1, "host" : "10.0.3.212" }
+#]
+#}
+#rs.initiate(cfg)
 
