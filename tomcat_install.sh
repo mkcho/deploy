@@ -27,12 +27,13 @@ fi
   ############################error##############
 sudo sh -c echo '<user name="admin" password="admin" roles="admin-gui.manager-gui"/>' >> /etc/tomcat7/tomcat-users.xml
 
-sudo sed -i -e "s,\(JAVA_OPTS\)=.*,\1=\"-Djava.awt.headless=true -Xmx${JDK_XMX} -XX:+UseConcMarkSweepGC\",g" \
+#JAVA_OPTS="-Djava.awt.headless=true -Xms512m -Xmx1024m -XX:+UseConcMarkSweepGC"
+sudo sed -i -e "s,\(JAVA_OPTS\)=.*,\1=\"-Djava.awt.headless=true Xms512m -Xmx${JDK_XMX} -XX:+UseConcMarkSweepGC\",g" \
   /etc/default/tomcat7
 
-flags=`grep "^#JAVA_HOME" /etc/default/tomcat7 | wc -l`
+flags=`grep "#JAVA_HOME" /etc/default/tomcat7 | wc -l`
 if [[ $flag -ne "0" ]]; then
-  sudo sed -i -e "s,\(JAVA_HOME\)=.*,\1=${JAVA_HOME},g" \
+  sudo sed -i -e "s,#\(JAVA_HOME\)=.*,\1=${JAVA_HOME},g" \
     /etc/default/tomcat7
 else
   ############################error##############
@@ -43,6 +44,6 @@ sudo update-rc.d tomcat7 enable
 
 # /home/mk/sis/src/bms/bms-master/target/watch-1.0.0-null.war ./watch.war
 sudo cp /vagrant/dist/watch-1.0.0-null.war /var/lib/tomcat7/webapps/watch.war
-#sudo cp /vagrant/dist/watch_web.xml /var/lib/tomcat7/webapps/watch/WEB-INF/web.xml
+sudo cp /vagrant/dist/watch_web.xml /var/lib/tomcat7/webapps/watch/WEB-INF/web.xml
 
 sudo service tomcat7 restart

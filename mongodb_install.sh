@@ -5,18 +5,18 @@ sudo sh -c 'echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart di
 #2. gpg key
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 
+sudo apt-get update
+sudo apt-get install mongodb-10gen
 
 #--> 1, 2¸¦ sudo apt-get install -fy mongodb
 
 #3. mongodb install
-sudo apt-get update
-sudo apt-get install mongodb-10gen
 
 #4. config modify
-sudo vi /etc/mongodb.conf
-port = 27027
-# Flag for a simple RESDT interface
-rest = true
+#sudo vi /etc/mongodb.conf
+#port = 27027
+## Flag for a simple RESDT interface
+#rest = true
 
 #5. mongodb replica setup
 #cfg = {
